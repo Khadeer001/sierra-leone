@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Voices of Sierra Leone</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-green: #007847;
+        --primary-blue: #1ebbf0;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --dark-gray: #333333;
+        --accent: #ffe082;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-gray);
+        background: linear-gradient(120deg, #e0f7fa 0%, #f5f5f5 100%);
+        min-height: 100vh;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(30, 187, 240, 0.95);
+        padding: 1rem;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .logo {
+        color: var(--white);
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .nav-links a.active,
+      .nav-links a[aria-current="page"] {
+        color: var(--primary-green);
+        pointer-events: none;
+        cursor: default;
+      }
+      .nav-links a:hover:not(.active):not([aria-current="page"]) {
+        color: var(--primary-green);
+      }
+      .mobile-menu {
+        display: none;
+      }
+      .contact-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        max-width: 900px;
+        margin: 7rem auto 0 auto;
+        padding: 2rem 1rem 0 1rem;
+      }
+      .contact-info {
+        background: var(--primary-green);
+        color: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        padding: 2.5rem 2rem;
+        flex: 1 1 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 220px;
+        max-width: 320px;
+      }
+      .contact-info .material-icons {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--accent);
+      }
+      .contact-info h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--accent);
+        letter-spacing: 1px;
+      }
+      .contact-info p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .contact-info a {
+        color: var(--accent);
+        text-decoration: underline;
+        font-size: 1rem;
+      }
+      .contact-card {
+        background: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem 2rem;
+        flex: 2 1 400px;
+        max-width: 500px;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .section-title {
+        text-align: left;
+        margin-bottom: 1.5rem;
+        color: var(--primary-green);
+        font-size: 2rem;
+        border-left: 6px solid var(--primary-blue);
+        padding-left: 1rem;
+        letter-spacing: 1px;
+      }
+      .contact-form {
+        width: 100%;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.3rem;
+        color: var(--dark-gray);
+        font-size: 0.95rem;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.7rem;
+        border: 1px solid #cce3e8;
+        border-radius: 5px;
+        font-size: 1rem;
+        background: #f8fcfc;
+        transition: border 0.2s;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border: 1.5px solid var(--primary-blue);
+        outline: none;
+        background: #fff;
+      }
+      .form-group textarea {
+        min-height: 100px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.7rem 2rem;
+        background: linear-gradient(
+          90deg,
+          var(--primary-green),
+          var(--primary-blue)
+        );
+        color: var(--white);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s, box-shadow 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(30, 187, 240, 0.08);
+      }
+      .btn:hover {
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        box-shadow: 0 4px 16px rgba(30, 187, 240, 0.15);
+      }
+      footer {
+        background-color: var(--primary-green);
+        color: var(--white);
+        padding: 3rem 2rem;
+        text-align: center;
+        margin-top: 4rem;
+      }
+      @media (max-width: 900px) {
+        .contact-wrapper {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 2rem;
+        }
+        .contact-info,
+        .contact-card {
+          max-width: 100%;
+        }
+      }
+      @media (max-width: 600px) {
+        .contact-wrapper {
+          padding: 1rem 0 0 0;
+        }
+        .contact-info,
+        .contact-card {
+          padding: 1.5rem 0.7rem;
+        }
+        .section-title {
+          font-size: 1.3rem;
+          padding-left: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">Voices of SL</a>
+        <div class="mobile-menu">
+          <i class="material-icons">menu</i>
+        </div>
+        <div class="nav-links">
+          <a href="index.html#hero">Mission</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#support">Get Involved</a>
+          <a href="contact.html" class="active" aria-current="page">Contact</a>
+        </div>
+      </div>
+    </nav>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <span class="material-icons">mail_outline</span>
+        <h2>Let's Connect</h2>
+        <p>
+          Have a question, want to get involved, or just want to say hello?<br />
+          Fill out the form and we'll get back to you soon!
+        </p>
+        <a href="mailto:shaikhadeer440@gmail.com">shaikhadeer440@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="section-title">Contact Us</div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/el/shaikhadeer440@gmail.com"
+          method="POST"
+        >
+          <!-- Honeypot to prevent spam -->
+          <input type="text" name="_honey" style="display: none" />
+          <!-- Disable Captcha -->
+          <input type="hidden" name="_captcha" value="false" />
+          <!-- Specify redirect after submission -->
+          <input
+            type="hidden"
+            name="_next"
+            value="https://voicesofsl.org/thanks.html"
+          />
+          <!-- Specify template -->
+          <input type="hidden" name="_template" value="table" />
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <div class="social-links">
+        <a href="#"><span class="material-icons">facebook</span></a>
+        <a href="#"><span class="material-icons">twitter</span></a>
+        <a href="#"><span class="material-icons">mail</span></a>
+        <a href="#"><span class="material-icons">link</span></a>
+      </div>
+      <p>
+        Email:
+        <a href="mailto:shaikhadeer440@gmail.com" style="color: var(--white)"
+          >shaikhadeer440@gmail.com</a
+        >
+      </p>
+      <p style="margin-top: 1rem">
+        &copy; 2024 Voices of Sierra Leone. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
