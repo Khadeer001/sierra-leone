@@ -581,6 +581,40 @@
           }
         });
       });
+
+      // Form Submission with JavaScript
+      const contactForm = document.querySelector(".contact-form");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent the default form submission
+
+          const formData = new FormData(this); // Get form data
+          const formAction = this.action; // Get the FormSubmit.co endpoint
+
+          fetch(formAction, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json", // FormSubmit recommends this header for fetch
+            },
+          })
+            .then((response) => {
+              // We don't necessarily need to check the response status here for FormSubmit
+              // as the email is sent regardless. The redirect is the goal.
+              console.log("Form submitted to FormSubmit.co", response);
+              // Redirect to the thank you page
+              window.location.href = "/thanks.html";
+            })
+            .catch((error) => {
+              console.error("Error submitting the form:", error);
+              // Optionally display an error message to the user
+              alert(
+                "There was an error sending your message. Please try again."
+              );
+            });
+        });
+      }
     </script>
   </body>
 </html>
