@@ -306,6 +306,11 @@
           max-width: 100%;
         }
       }
+      @media (max-width: 768px) {
+        .contact-wrapper {
+          margin-top: 4rem;
+        }
+      }
       @media (max-width: 600px) {
         .contact-wrapper {
           padding: 1rem 0 0 0;
@@ -410,6 +415,20 @@
 
         .hero p.slogan {
           font-size: 1.2rem;
+        }
+      }
+
+      @media (hover: hover) {
+        .nav-links a:hover:not(.active):not([aria-current="page"]) {
+          color: var(--primary-green);
+        }
+        .btn:hover {
+          background: linear-gradient(
+            90deg,
+            var(--primary-blue),
+            var(--primary-green)
+          );
+          box-shadow: 0 4px 16px rgba(30, 187, 240, 0.15);
         }
       }
     </style>
